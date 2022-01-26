@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace OOP_LABA7
@@ -12,9 +13,13 @@ namespace OOP_LABA7
         protected bool isChoose = false;
         private string color = "Gray";
         protected int size = 50;
+        protected Point pointMax;
+        protected Point pointMin;
         protected Point point = new Point(0, 0);
-        protected Pen redPen = new Pen(Color.Red, 2); 
-        
+        protected Pen redPen = new Pen(Color.Red, 2);
+        protected Pen normPen = new Pen(Color.Pink, 2);
+
+
         virtual public void draw(Graphics gr, BaseClass    obj) { }
 
         virtual public void drawframe(Graphics gr) { }
@@ -84,7 +89,20 @@ namespace OOP_LABA7
         {
             return false;
         }
+        virtual public bool isgroup()
+        {
+            return false;
+        }
 
+        virtual public void save(StreamWriter stream)
+        {
+            return;
+        }
+
+        virtual public void load(StreamReader stream, AbstractFactory factory)
+        {
+            return;
+        }
     }
 }
 
