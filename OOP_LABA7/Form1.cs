@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -247,6 +248,46 @@ namespace OOP_LABA_6_1
                     }
 
                     storage[storage.Size() - 1].setselect(true);
+                }
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream file = new FileStream(sfd.FileName, FileMode.Create);
+
+                    StreamWriter stream = new StreamWriter(file);
+
+                    stream.WriteLine(storage.Size());
+                    for (int i = 0; i < storage.Size(); i++)
+                        storage[i].save(stream);
+                    stream.Close();
+                    file.Close();
+                }
+            }
+
+            if (e.KeyCode == Keys.L)
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    FileStream file = new FileStream(ofd.FileName, FileMode.Open);
+
+                    StreamReader stream = new StreamReader(file);
+
+                    AbstractFactory factory = new MyFactory();
+
+                    int h = Convert.ToInt32(stream.ReadLine());
+
+                    for (int i = 0; i < h; i++)
+                    {
+                        string t = stream.ReadLine();
+                        BaseClass tmp = factory.createBase(t, paintBoxEnd.X, paintBoxEnd.Y);
+                        storage.push_back(tmp);
+                        if (storage[i] != null)
+                            storage[i].load(stream, factory);
+                    }
+                    stream.Close();
+                    file.Close();
                 }
             }
         }
