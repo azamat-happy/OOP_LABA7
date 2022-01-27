@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     class Section : BaseClass
     {
@@ -57,9 +57,9 @@ namespace OOP_LABA7
                 return false;
         }
 
-        override public void draw(Graphics gr, BaseClass obj)
+        override public void draw(Graphics gr)
         {
-            string objcol = obj.getcolor();
+            objcol = getcolor();
             if (objcol == "Gray")
             {
                 pen = new Pen(Color.Gray);

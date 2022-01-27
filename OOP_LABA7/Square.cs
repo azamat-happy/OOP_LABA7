@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     class Square : BaseClass
     {
@@ -15,9 +15,9 @@ namespace OOP_LABA7
         }
 
 
-        override public void draw(Graphics gr, BaseClass obj)
+        override public void draw(Graphics gr)
         {
-            string objcol = obj.getcolor();
+           objcol = getcolor();
             if (objcol == "Gray")
             {
                 gr.FillRectangle(Brushes.Gray, point.X - size, point.Y - size, 2 * size, 2 * size);

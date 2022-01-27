@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     class CCircle : BaseClass
     {
@@ -14,9 +14,9 @@ namespace OOP_LABA7
             point = coordination;
         }
 
-        override public void draw(Graphics gr, BaseClass obj)
+        override public void draw(Graphics gr)
         {
-            string objcol = obj.getcolor();
+            objcol = getcolor();
 
             if (objcol == "Gray")
             {

@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     class AbstractFactory
     {

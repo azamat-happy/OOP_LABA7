@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     class Triangle : BaseClass
     {
@@ -61,14 +61,14 @@ namespace OOP_LABA7
         }
 
         
-        override public void draw(Graphics gr, BaseClass obj)
+        override public void draw(Graphics gr)
         {
             Point[] points = new Point[3];
             points[0] = point1;
             points[1] = point2;
             points[2] = point3;
 
-            string objcol = obj.getcolor();
+            objcol = getcolor();
             if (objcol == "Gray")
             {
                 gr.FillPolygon(Brushes.Gray, points);

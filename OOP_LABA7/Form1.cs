@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     public partial class Form1 : Form
     {
@@ -18,6 +18,8 @@ namespace OOP_LABA7
         Point paintBoxEnd;
         int pictureboxWidth, pictureboxHeight, countOfSelected;
         Storage<BaseClass> storage;
+        OpenFileDialog ofd;
+        SaveFileDialog sfd;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +28,9 @@ namespace OOP_LABA7
             paintBoxStart = new Point(0, 0);
             paintBoxEnd = new Point(pictureboxWidth, pictureboxHeight);
             storage = new Storage<BaseClass>();
+
+            ofd = new OpenFileDialog();
+            sfd = new SaveFileDialog();
         }
         private void UnSelect(int k)
         {
@@ -200,6 +205,50 @@ namespace OOP_LABA7
                     }
                 }
             }
+            if (e.KeyCode == Keys.X)                                            //группировка
+            {
+                int v = 0;
+                for (int i = 0; i < storage.Size(); i++)
+                    if (storage[i].getselect())
+                        v++;
+
+                if (storage.Size() != 0 && v > 1)
+                {
+                    Group group = new Group(paintBoxEnd.X, paintBoxEnd.Y);
+                    for (int i = storage.Size() - 1; i >= 0; i--)
+                    {
+                        if (storage[i].getselect())
+                        {
+                            group.add(storage[i]);
+                            storage.pop(i);
+                        }
+                    }
+                    storage.push_back(group);
+                    storage[storage.Size() - 1].setselect(true);
+                }
+                pictureBox1.Invalidate();
+            }
+
+            if (e.KeyCode == Keys.Z)                                           //разгруппировка
+            {
+                if (storage.Size() != 0)
+                {
+                    for (int i = storage.Size() - 1; i >= 0; i--)
+                    {
+                        if (storage[i].getselect() && storage[i].isgroup())
+                        {
+                            Group group = (Group)storage[i];
+
+                            for (int j = group.GetCount() - 1; j >= 0; j--)
+                                storage.push_back(group.GetAndDel(j));
+
+                            storage.pop(i);
+                        }
+                    }
+
+                    storage[storage.Size() - 1].setselect(true);
+                }
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -273,7 +322,7 @@ namespace OOP_LABA7
             lb_ObjectCounter.Text = storage.Size().ToString();
             for (int i = 0; i < storage.Size(); i++)
             {
-                storage[i].draw(gr, storage[i]);
+                storage[i].draw(gr);
                 if (storage[i].getselect())
                 {
                     storage[i].drawframe(gr);

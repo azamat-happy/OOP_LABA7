@@ -2,25 +2,27 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA7
+namespace OOP_LABA_6_1
 {
     abstract class BaseClass
     {
         protected bool isChoose = false;
         private string color = "Gray";
         protected int size = 50;
-        protected Point pointMax;
-        protected Point pointMin;
+
         protected Point point = new Point(0, 0);
         protected Pen redPen = new Pen(Color.Red, 2);
-        protected Pen normPen = new Pen(Color.Pink, 2);
 
+        protected Point pointMax;
+        protected Point pointMin;
+        protected string objcol;
+        protected Pen normPen = new Pen(Color.Pink, 5);
 
-        virtual public void draw(Graphics gr, BaseClass    obj) { }
+        virtual public void draw(Graphics gr) { }
 
         virtual public void drawframe(Graphics gr) { }
 
@@ -44,17 +46,17 @@ namespace OOP_LABA7
             return isChoose;
         }
 
-        virtual public void move(int dx, int dy, Point start, Point end)
+        virtual public void move(int dx, int dy, Point beg, Point end)
         {
             if (dy == 0)                                    //движемся по х
                 if (dx > 0)
                 {
-                    if (point.X + size + dx < end.X)
+                    if (point.X + size + dx <= end.X)
                         point.X = point.X + dx;
                 }
                 else
                 {
-                    if (point.X - size + dx > start.X)
+                    if (point.X - size + dx >= beg.X)
                         point.X = point.X + dx;
                 }
             else if (dx == 0)                               //движемся по y
@@ -65,10 +67,15 @@ namespace OOP_LABA7
                 }
                 else
                 {
-                    if ((point.Y - size + dy >= start.Y))
+                    if ((point.Y - size + dy >= beg.Y))
                         point.Y = point.Y + dy;
                 }
+            pointMin.X = point.X - size;
+            pointMin.Y = point.Y - size;
+            pointMax.X = point.X + size;
+            pointMax.Y = point.Y + size;
         }
+
 
         virtual public void resize(int dx, Point begin, Point end)
         {
@@ -80,14 +87,27 @@ namespace OOP_LABA7
             }
             else
             {
-                if (2 * size + dx > 50)
+                if (2 * size + dx > 10)
                     size = size + dx;
             }
+            pointMin.X = point.X - size;
+            pointMin.Y = point.Y - size;
+            pointMax.X = point.X + size;
+            pointMax.Y = point.Y + size;
         }
 
         virtual public bool CheckIfObjectUnderCoordination(Point point)              //входит ли курсор в фигуру
         {
             return false;
+        }
+        public Point getpointMin()
+        {
+            return pointMin;
+        }
+
+        public Point getpointMax()
+        {
+            return pointMax;
         }
         virtual public bool isgroup()
         {
@@ -103,6 +123,8 @@ namespace OOP_LABA7
         {
             return;
         }
+
+
     }
 }
 
