@@ -290,6 +290,7 @@ namespace OOP_LABA_6_1
                     stream.Close();
                     file.Close();
                 }
+                pictureBox1.Invalidate();
             }
         }
 
