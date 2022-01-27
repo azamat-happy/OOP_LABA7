@@ -13,6 +13,8 @@ namespace OOP_LABA_6_1
         public Square(Point coordination)
         {
             point = coordination;
+            pointMin = new Point(point.X - size, point.Y - size);
+            pointMax = new Point(point.X + size, point.Y + size);
         }
 
 
@@ -56,7 +58,7 @@ namespace OOP_LABA_6_1
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Square");
-            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + objcol);
+            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + objcol);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
@@ -64,10 +66,10 @@ namespace OOP_LABA_6_1
             string[] data = stream.ReadLine().Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
-            size = int.Parse(data[2]);
+            base.size = int.Parse(data[2]);
             colorselect(data[3]);
-            pointMin = new Point(point.X - size, point.Y - size);
-            pointMax = new Point(point.X + size, point.Y + size);
+            pointMin = new Point(point.X - base.size, point.Y - base.size);
+            pointMax = new Point(point.X + base.size, point.Y + base.size);
         }
 
     }

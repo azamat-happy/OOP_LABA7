@@ -13,40 +13,44 @@ namespace OOP_LABA_6_1
         private Point point1;
         private Point point2;
         Pen pen;
-
         public Section(Point coordination)
         {
             point = coordination;
             point1 = new Point(point.X - base.size, point.Y - base.size);
             point2 = new Point(point.X + base.size, point.Y + base.size);
             redPen = new Pen(Color.Red);
-            redPen.Width = 2;
+
+            pointMin = new Point(point.X - size, point.Y - size);
+            pointMax = new Point(point.X + size, point.Y + size);
+
+            redPen.Width = 4;
         }
 
         public override void resize(int dx, Point start, Point end)
         {
             if (dx >= 0)
             {
-                if ((point2.X + dx < end.X) && (point2.Y + dx < end.Y) && (point1.X - dx > start.X) && (point1.Y - dx > start.Y))
+                if ((point1.X + dx <= end.X) && (point1.Y + dx <= end.Y) && (point2.X + dx >= start.X) && (point2.Y + dx >= start.Y))
                 {
-                    point2.X += dx;
-                    point2.Y += dx;
-                    point1.X -= dx;
-                    point1.Y -= dx;
+                    base.size += dx;
                 }
             }
             else
             {
-                if (point2.X + dx > point1.X - dx)
+                if (point1.X + dx > point2.X - dx)
                 {
-                    {
-                        point2.X += dx;
-                        point2.Y += dx;
-                        point1.X -= dx;
-                        point1.Y -= dx;
-                    }
+                    base.size += dx;
                 }
             }
+            point1.X = point.X + base.size;
+            point1.Y = point.Y + base.size;
+            point2.X = point.X - base.size;
+            point2.Y = point.Y - base.size;
+
+            pointMin.X = point.X - base.size;
+            pointMin.Y = point.Y - base.size;
+            pointMax.X = point.X + base.size;
+            pointMax.Y = point.Y + base.size;
         }
 
 
@@ -64,31 +68,31 @@ namespace OOP_LABA_6_1
             if (objcol == "Gray")
             {
                 pen = new Pen(Color.Gray);
-                pen.Width = 2;
+                pen.Width = 4;
                 gr.DrawLine(pen, point2, point1);
             }
             else if (objcol == "LightSeaGreen")
             {
                 pen = new Pen(Color.LightSeaGreen);
-                pen.Width = 2;
+                pen.Width = 4;
                 gr.DrawLine(pen, point2, point1);
             }
             else if (objcol == "Orange")
             {
                 pen = new Pen(Color.Orange);
-                pen.Width = 2;
+                pen.Width = 4;
                 gr.DrawLine(pen, point2, point1);
             }
             else if (objcol == "Green")
             {
                 pen = new Pen(Color.Green);
-                pen.Width = 2;
+                pen.Width = 4;
                 gr.DrawLine(pen, point2, point1);
             }
             else if (objcol == "Yellow")
             {
                 pen = new Pen(Color.Yellow);
-                pen.Width = 2;
+                pen.Width = 4;
                 gr.DrawLine(pen, point2, point1);
             }
         }
@@ -102,20 +106,27 @@ namespace OOP_LABA_6_1
         {
             if (dy == 0)                                    //движемся по х
             {
-                if ((point2.X + dx < end.X) && (point1.X + dx > beg.X))
+                if ((point1.X + dx <= end.X) && (point2.X + dx >= beg.X))
                 {
-                    point1.X += dx;
-                    point2.X += dx;
+                    point.X += dx;
                 }
             }
             else if (dx == 0)                               //движемся по y
             {
-                if ((point2.Y + dy < end.Y) && (point1.Y + dy > beg.Y))
+                if ((point1.Y + dy <= end.Y) && (point2.Y + dy >= beg.Y))
                 {
-                    point1.Y += dy;
-                    point2.Y += dy;
+                    point.Y += dy;
                 }
             }
+            point1.X = point.X + base.size;
+            point1.Y = point.Y + base.size;
+            point2.X = point.X - base.size;
+            point2.Y = point.Y - base.size;
+
+            pointMin.X = point.X - base.size;
+            pointMin.Y = point.Y - base.size;
+            pointMax.X = point.X + base.size;
+            pointMax.Y = point.Y + base.size;
         }
         public override void save(StreamWriter stream)
         {
@@ -127,12 +138,12 @@ namespace OOP_LABA_6_1
             string[] data = stream.ReadLine().Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
-            size = int.Parse(data[2]);
+            base.size = int.Parse(data[2]);
             colorselect(data[3]);
-            pointMin = new Point(point.X - base.size, point.Y - size);
-            pointMax = new Point(point.X + size, point.Y + size);
-            point1 = new Point(point.X + size, point.Y + size);
-            point2 = new Point(point.X - size, point.Y - size);
+            pointMin = new Point(point.X - base.size, point.Y - base.size);
+            pointMax = new Point(point.X + base.size, point.Y + base.size);
+            point1 = new Point(point.X + base.size, point.Y + base.size);
+            point2 = new Point(point.X - base.size, point.Y - base.size);
         }
     }
 }

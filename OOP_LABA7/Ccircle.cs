@@ -13,6 +13,8 @@ namespace OOP_LABA_6_1
         public CCircle(Point coordination)
         {
             point = coordination;
+            pointMin = new Point(point.X - size, point.Y - size);
+            pointMax = new Point(point.X + size, point.Y + size);
         }
 
         override public void draw(Graphics gr)

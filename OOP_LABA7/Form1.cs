@@ -225,8 +225,8 @@ namespace OOP_LABA_6_1
                         }
                     }
                     storage.push_back(group);
-                    storage[storage.Size() - 1].setselect(true);
-                }
+                    storage[storage.Size()-1].setselect(true);
+                }   
                 pictureBox1.Invalidate();
             }
 
@@ -249,6 +249,7 @@ namespace OOP_LABA_6_1
 
                     storage[storage.Size() - 1].setselect(true);
                 }
+                pictureBox1.Invalidate();
             }
             if (e.KeyCode == Keys.S)
             {
@@ -371,6 +372,7 @@ namespace OOP_LABA_6_1
                 }
             }
             lb_ChoosedObject.Text = countOfSelected.ToString();
+
         }
     }
 }
