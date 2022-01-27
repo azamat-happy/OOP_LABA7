@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,12 @@ namespace OOP_LABA_6_1
         {
             point = coordination;
 
-            point1.X = point.X - size;
-            point1.Y = point.Y + size;
-            point2.X = point.X + size;
-            point2.Y = point.Y + size;
+            point1.X = point.X - base.size;
+            point1.Y = point.Y + base.size;
+            point2.X = point.X + base.size;
+            point2.Y = point.Y + base.size;
             point3.X = point.X;
-            point3.Y = point.Y - size;
+            point3.Y = point.Y - base.size;
 
             redPen = new Pen(Color.Red);
             redPen.Width = 2;
@@ -155,6 +156,29 @@ namespace OOP_LABA_6_1
             else
                 return false;
         }
+        public override void save(StreamWriter stream)
+        {
+            stream.WriteLine("Triangle");
+            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + objcol);
+        }
+
+        public override void load(StreamReader stream, AbstractFactory factory)
+        {
+            string[] data = stream.ReadLine().Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+            point.X = int.Parse(data[0]);
+            point.Y = int.Parse(data[1]);
+            size = int.Parse(data[2]);
+            colorselect(data[3]);
+            pointMin = new Point(point.X - size, point.Y - size);
+            pointMax = new Point(point.X + size, point.Y + size);
+            point1.X = point.X - size;
+            point1.Y = point.Y + size;
+            point2.X = point.X + size;
+            point2.Y = point.Y + size;
+            point3.X = point.X;
+            point3.Y = point.Y - size;
+        }
 
     }
+
 }
