@@ -105,7 +105,11 @@ namespace OOP_LABA_6_1
                 bases[i].draw(gr);
             
         }
-
+        public override void colorselect(string color1)
+        {
+            for (int i = bases.Size() - 1; i >= 0; i--)
+                bases[i].colorselect(color1);
+        }
         private void findframe()
         {
             pointMin.X = width;

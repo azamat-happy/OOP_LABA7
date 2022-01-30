@@ -237,7 +237,6 @@ namespace OOP_LABA_6_1
                     for (int i = storage.Size() - 1; i >= 0; i--)
                     {
                         if (storage[i].getselect() && storage[i].isgroup())
-                        //if (storage[i].isgroup())
                         {
                             Group group = (Group)storage[i];
 
@@ -250,7 +249,6 @@ namespace OOP_LABA_6_1
                             storage.pop(i);
                         }
                     }
-
                     //storage[storage.Size() - 1].setselect(true);
                 }
                 pictureBox1.Invalidate();

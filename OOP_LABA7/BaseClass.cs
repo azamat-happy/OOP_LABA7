@@ -25,8 +25,8 @@ namespace OOP_LABA_6_1
         virtual public void draw(Graphics gr) { }
 
         virtual public void drawframe(Graphics gr) { }
-    
-        public void colorselect(string color_select)
+
+        virtual public void  colorselect(string color_select)
         {
             color = color_select;
         }
