@@ -74,9 +74,9 @@ namespace OOP_LABA7
             {
                 gr.FillPolygon(Brushes.Gray, points);
             }
-            else if (ColorOfObject == "LightSeaGreen")
+            else if (ColorOfObject == "Purple")
             {
-                gr.FillPolygon(Brushes.LightSeaGreen, points);
+                gr.FillPolygon(Brushes.Purple, points);
             }
             else if (ColorOfObject == "Orange")
             {

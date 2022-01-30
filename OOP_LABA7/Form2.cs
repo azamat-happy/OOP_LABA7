@@ -172,13 +172,13 @@ namespace OOP_LABA7
                 }
             }
 
-            if (e.KeyCode == Keys.L)
+            if (e.KeyCode == Keys.P)
             {
                 for (int i = 0; i < storage.Size(); i++)
                 {
                     if (storage[i].getselect())
                     {
-                        storage[i].selectColor("LightSeaGreen");
+                        storage[i].selectColor("Purple");
                         pictureBox1.Invalidate();
                     }
                 }

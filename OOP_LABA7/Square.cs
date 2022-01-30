@@ -25,9 +25,9 @@ namespace OOP_LABA7
             {
                 graphics.FillRectangle(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (ColorOfObject == "LightSeaGreen")
+            else if (ColorOfObject == "Purple")
             {
-                graphics.FillRectangle(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.Purple, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
             else if (ColorOfObject == "Orange")
             {

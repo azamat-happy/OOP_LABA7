@@ -25,9 +25,9 @@ namespace OOP_LABA7
             {
                 graphics.FillEllipse(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (ColorOfObject == "LightSeaGreen")
+            else if (ColorOfObject == "Purple")
             {
-                graphics.FillEllipse(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Purple, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
             else if (ColorOfObject == "Orange")
             {

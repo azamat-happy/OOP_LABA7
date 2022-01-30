@@ -131,12 +131,13 @@ namespace OOP_LABA7
             // 
             // redlabel
             // 
-            this.redlabel.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.redlabel.BackColor = System.Drawing.Color.Purple;
+            this.redlabel.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.redlabel.Location = new System.Drawing.Point(89, 40);
             this.redlabel.Name = "redlabel";
             this.redlabel.Size = new System.Drawing.Size(35, 35);
             this.redlabel.TabIndex = 5;
-            this.redlabel.Text = "L";
+            this.redlabel.Text = "P";
             this.redlabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // yellowlabel
