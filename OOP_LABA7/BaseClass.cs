@@ -25,11 +25,7 @@ namespace OOP_LABA_6_1
         virtual public void draw(Graphics gr) { }
 
         virtual public void drawframe(Graphics gr) { }
-        //virtual public void drawframe(Graphics gr)
-        //{
-        //    gr.DrawRectangle(redPen, point.X - size, point.Y - size, 2 * size, 2 * size);
-        //}
-
+    
         public void colorselect(string color_select)
         {
             color = color_select;

@@ -237,20 +237,30 @@ namespace OOP_LABA_6_1
                     for (int i = storage.Size() - 1; i >= 0; i--)
                     {
                         if (storage[i].getselect() && storage[i].isgroup())
+                        //if (storage[i].isgroup())
                         {
                             Group group = (Group)storage[i];
 
                             for (int j = group.GetCount() - 1; j >= 0; j--)
+                            {
                                 storage.push_back(group.GetAndDel(j));
+                                storage[storage.Size() - 1].setselect(true);
+                            }
 
                             storage.pop(i);
                         }
                     }
 
-                    storage[storage.Size() - 1].setselect(true);
+                    //storage[storage.Size() - 1].setselect(true);
                 }
                 pictureBox1.Invalidate();
             }
+            if (e.KeyCode == Keys.U)
+            {
+                for (int i = storage.Size() - 1; i >= 0; i--)
+                    storage.pop(i);
+            }
+
             if (e.KeyCode == Keys.S)
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
