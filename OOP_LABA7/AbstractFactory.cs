@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class AbstractFactory
     {
@@ -22,9 +22,6 @@ namespace OOP_LABA_6_1
                     break;
                 case "Square":
                     obj = new Square(new Point(0, 0));
-                    break;
-                case "Section":
-                    obj = new Section(new Point(0, 0));
                     break;
                 case "Triangle":
                     obj = new Triangle(new Point(0, 0));

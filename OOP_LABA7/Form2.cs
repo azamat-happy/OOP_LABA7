@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         //int index = 0;
         int choosen_shape;
@@ -21,7 +21,7 @@ namespace OOP_LABA_6_1
         Storage<BaseClass> storage;
         OpenFileDialog ofd;
         SaveFileDialog sfd;
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             pictureboxWidth = pictureBox1.Width;
@@ -62,7 +62,6 @@ namespace OOP_LABA_6_1
                 choosen_shape = 1;
                 label1.BackColor = Color.GreenYellow;
                 label2.BackColor = Color.Empty;
-                label3.BackColor = Color.Empty;
                 label4.BackColor = Color.Empty;
             }
 
@@ -72,27 +71,17 @@ namespace OOP_LABA_6_1
                 choosen_shape = 2;
                 label1.BackColor = Color.Empty;
                 label2.BackColor = Color.GreenYellow;
-                label3.BackColor = Color.Empty;
                 label4.BackColor = Color.Empty;
             }
             if (e.KeyCode == Keys.D3)
             {
-                //если выбран отрезок
+                //если выбран треугольник
                 choosen_shape = 3;
                 label1.BackColor = Color.Empty;
                 label2.BackColor = Color.Empty;
-                label3.BackColor = Color.GreenYellow;
-                label4.BackColor = Color.Empty;
-            }
-            if (e.KeyCode == Keys.D4)
-            {
-                //если выбран треугольник
-                choosen_shape = 4;
-                label1.BackColor = Color.Empty;
-                label2.BackColor = Color.Empty;
-                label3.BackColor = Color.Empty;
                 label4.BackColor = Color.GreenYellow;
             }
+
             if (e.KeyCode == Keys.Left)
             {
                 for (int i = storage.Size() - 1; i >= 0; i--)
@@ -143,7 +132,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect() == true)
                     {
-                        storage[i].resize(1, paintBoxStart, paintBoxEnd);
+                        storage[i].ChangeSize(1, paintBoxStart, paintBoxEnd);
                         pictureBox1.Invalidate();
                     }
                 }
@@ -154,7 +143,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect() == true)
                     {
-                        storage[i].resize(-1, paintBoxStart, paintBoxEnd);
+                        storage[i].ChangeSize(-1, paintBoxStart, paintBoxEnd);
                         pictureBox1.Invalidate();
                     }
                 }
@@ -165,7 +154,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect())
                     {
-                        storage[i].colorselect("Green");
+                        storage[i].selectColor("Green");
                         pictureBox1.Invalidate();
                     }
                 }
@@ -177,7 +166,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect())
                     {
-                        storage[i].colorselect("Yellow");
+                        storage[i].selectColor("Yellow");
                         pictureBox1.Invalidate();
                     }
                 }
@@ -189,7 +178,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect())
                     {
-                        storage[i].colorselect("LightSeaGreen");
+                        storage[i].selectColor("LightSeaGreen");
                         pictureBox1.Invalidate();
                     }
                 }
@@ -201,7 +190,7 @@ namespace OOP_LABA_6_1
                 {
                     if (storage[i].getselect())
                     {
-                        storage[i].colorselect("Orange");
+                        storage[i].selectColor("Orange");
                         pictureBox1.Invalidate();
                     }
                 }
@@ -225,8 +214,8 @@ namespace OOP_LABA_6_1
                         }
                     }
                     storage.push_back(group);
-                    storage[storage.Size()-1].setselect(true);
-                }   
+                    storage[storage.Size() - 1].setselect(true);
+                }
                 pictureBox1.Invalidate();
             }
 
@@ -236,7 +225,7 @@ namespace OOP_LABA_6_1
                 {
                     for (int i = storage.Size() - 1; i >= 0; i--)
                     {
-                        if (storage[i].getselect() && storage[i].isgroup())
+                        if (storage[i].getselect() && storage[i].isGroup())
                         {
                             Group group = (Group)storage[i];
 
@@ -309,7 +298,7 @@ namespace OOP_LABA_6_1
             {
                 if ((storage[i].CheckIfObjectUnderCoordination(coordination.Location) && (Control.ModifierKeys & Keys.Shift) == Keys.Shift))
                 {
-                   
+
                     storage[i].setselect(true);
                     pictureBox1.Invalidate();
                     return;
@@ -328,7 +317,7 @@ namespace OOP_LABA_6_1
                 CCircle circle = new CCircle(coordination.Location);
                 circle.setselect(true);
                 storage.push_back(circle);
-                UnSelect(storage.Size()-1);
+                UnSelect(storage.Size() - 1);
                 //index++;
 
             }
@@ -338,30 +327,21 @@ namespace OOP_LABA_6_1
                 Square square = new Square(coordination.Location);
                 square.setselect(true);
                 storage.push_back(square);
-                UnSelect(storage.Size()-1);
+                UnSelect(storage.Size() - 1);
                 //index++;
 
             }
-            //если выбранная фигура - отрезок
+            //если выбранная фигура -  треугольник
             if (choosen_shape == 3)
-            {
-                Section Line = new Section(coordination.Location);
-                Line.setselect(true);
-                storage.push_back(Line);
-                UnSelect(storage.Size()-1);
-                //index++;
-
-            }
-            //если выбранная фигура - треугольник
-            if (choosen_shape == 4)
             {
                 Triangle Triangle = new Triangle(coordination.Location);
                 Triangle.setselect(true);
                 storage.push_back(Triangle);
-                UnSelect(storage.Size()-1);
+                UnSelect(storage.Size() - 1);
                 //index++;
 
             }
+
             //panel3.Invalidate();
             pictureBox1.Invalidate();
         }

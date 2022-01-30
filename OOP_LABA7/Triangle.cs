@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class Triangle : BaseClass
     {
@@ -32,7 +32,7 @@ namespace OOP_LABA_6_1
             redPen.Width = 2;
         }
 
-        override public void resize(int x, Point start, Point end)
+        override public void ChangeSize(int x, Point start, Point end)
         {
             if (x >= 0)
             {
@@ -69,24 +69,24 @@ namespace OOP_LABA_6_1
             points[1] = point2;
             points[2] = point3;
 
-            objcol = getcolor();
-            if (objcol == "Gray")
+            ColorOfObject = getcolor();
+            if (ColorOfObject == "Gray")
             {
                 gr.FillPolygon(Brushes.Gray, points);
             }
-            else if (objcol == "LightSeaGreen")
+            else if (ColorOfObject == "LightSeaGreen")
             {
                 gr.FillPolygon(Brushes.LightSeaGreen, points);
             }
-            else if (objcol == "Orange")
+            else if (ColorOfObject == "Orange")
             {
                 gr.FillPolygon(Brushes.Orange, points);
             }
-            else if (objcol == "Green")
+            else if (ColorOfObject == "Green")
             {
                 gr.FillPolygon(Brushes.Green, points);
             }
-            else if (objcol == "Yellow")
+            else if (ColorOfObject == "Yellow")
             {
                 gr.FillPolygon(Brushes.Yellow, points);
             }
@@ -162,7 +162,7 @@ namespace OOP_LABA_6_1
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Triangle");
-            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + objcol);
+            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + ColorOfObject);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
@@ -171,7 +171,7 @@ namespace OOP_LABA_6_1
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
             base.size = int.Parse(data[2]);
-            colorselect(data[3]);
+            selectColor(data[3]);
             pointMin = new Point(point.X - base.size, point.Y - base.size);
             pointMax = new Point(point.X + base.size, point.Y + base.size);
             point1.X = point.X - base.size;

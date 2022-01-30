@@ -6,29 +6,27 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     abstract class BaseClass
     {
         protected bool isChoose = false;
         private string color = "Gray";
         protected int size = 50;
-
         protected Point point = new Point(0, 0);
-        protected Pen redPen = new Pen(Color.Red, 2);
-
         protected Point pointMax;
         protected Point pointMin;
-        protected string objcol;
+        protected string ColorOfObject;
         protected Pen normPen = new Pen(Color.Pink, 5);
+        protected Pen redPen = new Pen(Color.Red, 2);
 
         virtual public void draw(Graphics gr) { }
 
         virtual public void drawframe(Graphics gr) { }
 
-        virtual public void  colorselect(string color_select)
+        virtual public void  selectColor(string selectColor)
         {
-            color = color_select;
+            color = selectColor;
         }
 
         public string getcolor()
@@ -46,9 +44,10 @@ namespace OOP_LABA_6_1
             return isChoose;
         }
 
-        virtual public void move(int dx, int dy, Point beg, Point end)
+        virtual public void move(int dx, int dy, Point begin, Point end)
         {
-            if (dy == 0)                                    //движемся по х
+            //движение по оси Х
+            if (dy == 0)                                    
                 if (dx > 0)
                 {
                     if (point.X + size + dx <= end.X)
@@ -56,10 +55,11 @@ namespace OOP_LABA_6_1
                 }
                 else
                 {
-                    if (point.X - size + dx >= beg.X)
+                    if (point.X - size + dx >= begin.X)
                         point.X = point.X + dx;
                 }
-            else if (dx == 0)                               //движемся по y
+            //движение по оси Y
+            else if (dx == 0)                             
                 if (dy > 0)
                 {
                     if (point.Y + size + dy <= end.Y)
@@ -67,7 +67,7 @@ namespace OOP_LABA_6_1
                 }
                 else
                 {
-                    if ((point.Y - size + dy >= beg.Y))
+                    if ((point.Y - size + dy >= begin.Y))
                         point.Y = point.Y + dy;
                 }
             pointMin.X = point.X - size;
@@ -77,7 +77,7 @@ namespace OOP_LABA_6_1
         }
 
 
-        virtual public void resize(int dx, Point begin, Point end)
+        virtual public void ChangeSize(int dx, Point begin, Point end)
         {
             if (dx >= 0)
             {
@@ -96,7 +96,7 @@ namespace OOP_LABA_6_1
             pointMax.Y = point.Y + size;
         }
 
-        virtual public bool CheckIfObjectUnderCoordination(Point point)              //входит ли курсор в фигуру
+        virtual public bool CheckIfObjectUnderCoordination(Point point)              
         {
             return false;
         }
@@ -109,7 +109,7 @@ namespace OOP_LABA_6_1
         {
             return pointMax;
         }
-        virtual public bool isgroup()
+        virtual public bool isGroup()
         {
             return false;
         }

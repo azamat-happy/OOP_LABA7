@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class Group : BaseClass
     {
@@ -74,20 +74,20 @@ namespace OOP_LABA_6_1
             findframe();
         }
 
-        public override void resize(int dx, Point begin, Point end)
+        public override void ChangeSize(int dx, Point begin, Point end)
         {
             if (dx > 0)
             {
                 if ((pointMax.X + dx < end.X) && (pointMax.Y + dx < end.Y) && (pointMin.X - dx > begin.X) && (pointMin.Y - dx > begin.Y))
                 {
                     for (int i = 0; i < bases.Size(); i++)
-                        bases[i].resize(dx, begin, end);
+                        bases[i].ChangeSize(dx, begin, end);
                 }
             }
             else
             {
                 for (int i = 0; i < bases.Size(); i++)
-                    bases[i].resize(dx, begin, end);
+                    bases[i].ChangeSize(dx, begin, end);
             }
             findframe();
         }
@@ -105,10 +105,10 @@ namespace OOP_LABA_6_1
                 bases[i].draw(gr);
             
         }
-        public override void colorselect(string color1)
+        public override void selectColor(string color1)
         {
             for (int i = bases.Size() - 1; i >= 0; i--)
-                bases[i].colorselect(color1);
+                bases[i].selectColor(color1);
         }
         private void findframe()
         {
@@ -149,7 +149,7 @@ namespace OOP_LABA_6_1
             gr.DrawRectangle(redPen, pointMin.X, pointMin.Y, pointMax.X - pointMin.X, pointMax.Y - pointMin.Y);
         }
 
-        public override bool isgroup()
+        public override bool isGroup()
         {
             return true;
         }

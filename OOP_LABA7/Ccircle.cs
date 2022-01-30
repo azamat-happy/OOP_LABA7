@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class CCircle : BaseClass
     {
@@ -17,35 +17,35 @@ namespace OOP_LABA_6_1
             pointMax = new Point(point.X + size, point.Y + size);
         }
 
-        override public void draw(Graphics gr)
+        override public void draw(Graphics graphics)
         {
-            objcol = getcolor();
+            ColorOfObject = getcolor();
 
-            if (objcol == "Gray")
+            if (ColorOfObject == "Gray")
             {
-                gr.FillEllipse(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "LightSeaGreen")
+            else if (ColorOfObject == "LightSeaGreen")
             {
-                gr.FillEllipse(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Orange")
+            else if (ColorOfObject == "Orange")
             {
-                gr.FillEllipse(Brushes.Orange, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Orange, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Green")
+            else if (ColorOfObject == "Green")
             {
-                gr.FillEllipse(Brushes.Green, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Green, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Yellow")
+            else if (ColorOfObject == "Yellow")
             {
-                gr.FillEllipse(Brushes.Yellow, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Yellow, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
         }
 
-        public override void drawframe(Graphics gr)
+        public override void drawframe(Graphics graphics)
         {
-            gr.DrawEllipse(redPen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+            graphics.DrawEllipse(redPen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
         }
 
         public override bool CheckIfObjectUnderCoordination(Point p)
@@ -55,7 +55,7 @@ namespace OOP_LABA_6_1
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Circle");
-            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + objcol);
+            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + ColorOfObject);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
@@ -64,7 +64,7 @@ namespace OOP_LABA_6_1
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
             size = int.Parse(data[2]);
-            colorselect(data[3]);
+            selectColor(data[3]);
             pointMin = new Point(point.X - size, point.Y - size);
             pointMax = new Point(point.X + size, point.Y + size);
         }

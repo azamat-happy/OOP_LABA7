@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class Storage<T>
     {

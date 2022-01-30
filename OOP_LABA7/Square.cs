@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_LABA_6_1
+namespace OOP_LABA7
 {
     class Square : BaseClass
     {
@@ -18,34 +18,34 @@ namespace OOP_LABA_6_1
         }
 
 
-        override public void draw(Graphics gr)
+        override public void draw(Graphics graphics)
         {
-           objcol = getcolor();
-            if (objcol == "Gray")
+           ColorOfObject = getcolor();
+            if (ColorOfObject == "Gray")
             {
-                gr.FillRectangle(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "LightSeaGreen")
+            else if (ColorOfObject == "LightSeaGreen")
             {
-                gr.FillRectangle(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.LightSeaGreen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Orange")
+            else if (ColorOfObject == "Orange")
             {
-                gr.FillRectangle(Brushes.Orange, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.Orange, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Green")
+            else if (ColorOfObject == "Green")
             {
-                gr.FillRectangle(Brushes.Green, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.Green, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
-            else if (objcol == "Yellow")
+            else if (ColorOfObject == "Yellow")
             {
-                gr.FillRectangle(Brushes.Yellow, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillRectangle(Brushes.Yellow, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
             }
         }
 
-        override public void drawframe(Graphics gr)
+        override public void drawframe(Graphics graphics)
         {
-            gr.DrawRectangle(redPen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+            graphics.DrawRectangle(redPen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
         }
         override public bool CheckIfObjectUnderCoordination(Point p)
         {
@@ -58,7 +58,7 @@ namespace OOP_LABA_6_1
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Square");
-            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + objcol);
+            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + ColorOfObject);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
@@ -67,7 +67,7 @@ namespace OOP_LABA_6_1
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
             base.size = int.Parse(data[2]);
-            colorselect(data[3]);
+            selectColor(data[3]);
             pointMin = new Point(point.X - base.size, point.Y - base.size);
             pointMax = new Point(point.X + base.size, point.Y + base.size);
         }
