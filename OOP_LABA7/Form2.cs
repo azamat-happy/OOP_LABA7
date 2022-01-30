@@ -13,7 +13,6 @@ namespace OOP_LABA7
 {
     public partial class Form2 : Form
     {
-        //int index = 0;
         int choosen_shape;
         Point paintBoxStart;
         Point paintBoxEnd;
@@ -33,7 +32,7 @@ namespace OOP_LABA7
             ofd = new OpenFileDialog();
             sfd = new SaveFileDialog();
         }
-        private void UnSelect(int k)
+        private void UnselectOtherObjects(int k)
         {
             for (int i = storage.Size() - 1; i >= 0; i--)
             {
@@ -43,6 +42,7 @@ namespace OOP_LABA7
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+            //удалить выделенный объект
             if (e.KeyCode == Keys.Delete)
             {
                 for (int i = storage.Size() - 1; i >= 0; i--)
@@ -50,12 +50,13 @@ namespace OOP_LABA7
                     if (storage[i].getselect() == true)
                     {
                         storage.pop(i);
-                        //index--;
                     }
                 }
                 pictureBox1.Invalidate();
             }
-
+            /////////////////////////////////////////
+            ///выбор обьекта
+            //////////////////////////////
             if (e.KeyCode == Keys.D1)
             {
                 //если выбран круг
@@ -81,7 +82,9 @@ namespace OOP_LABA7
                 label2.BackColor = Color.Empty;
                 label4.BackColor = Color.GreenYellow;
             }
-
+            //////////////////////////
+            ///перемещение
+            ///////////////////
             if (e.KeyCode == Keys.Left)
             {
                 for (int i = storage.Size() - 1; i >= 0; i--)
@@ -126,6 +129,9 @@ namespace OOP_LABA7
                     }
                 }
             }
+            //////
+            ///изменение размера
+            ///////////////
             if (e.KeyCode == Keys.Oemplus)
             {
                 for (int i = storage.Size() - 1; i >= 0; i--)
@@ -148,6 +154,9 @@ namespace OOP_LABA7
                     }
                 }
             }
+            ///////////
+            ///изменить цвет
+            ////////////////
             if (e.KeyCode == Keys.G)
             {
                 for (int i = 0; i < storage.Size(); i++)
@@ -195,7 +204,10 @@ namespace OOP_LABA7
                     }
                 }
             }
-            if (e.KeyCode == Keys.X)                                            //группировка
+            ///////////////
+            ///добавить в группу
+            ///////////////
+            if (e.KeyCode == Keys.X)                                           
             {
                 int v = 0;
                 for (int i = 0; i < storage.Size(); i++)
@@ -218,8 +230,10 @@ namespace OOP_LABA7
                 }
                 pictureBox1.Invalidate();
             }
-
-            if (e.KeyCode == Keys.Z)                                           //разгруппировка
+            ///////////
+            ///разгруировать
+            ////////////////
+            if (e.KeyCode == Keys.Z)                                           
             {
                 if (storage.Size() != 0)
                 {
@@ -242,12 +256,16 @@ namespace OOP_LABA7
                 }
                 pictureBox1.Invalidate();
             }
-            if (e.KeyCode == Keys.U)
+            ///////////////Удалить все
+            if (e.KeyCode == Keys.D)
             {
                 for (int i = storage.Size() - 1; i >= 0; i--)
                     storage.pop(i);
+                pictureBox1.Invalidate();
             }
-
+            ////////////////
+            ///Сохранить
+            ////////////////
             if (e.KeyCode == Keys.S)
             {
                 if (sfd.ShowDialog() == DialogResult.OK)
@@ -264,6 +282,9 @@ namespace OOP_LABA7
                 }
             }
 
+            ///////////
+            ///загрузить
+            /////////////
             if (e.KeyCode == Keys.L)
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
@@ -274,9 +295,9 @@ namespace OOP_LABA7
 
                     AbstractFactory factory = new MyFactory();
 
-                    int h = Convert.ToInt32(stream.ReadLine());
+                    int k = Convert.ToInt32(stream.ReadLine());
 
-                    for (int i = 0; i < h; i++)
+                    for (int i = 0; i < k; i++)
                     {
                         string t = stream.ReadLine();
                         BaseClass tmp = factory.createBase(t, paintBoxEnd.X, paintBoxEnd.Y);
@@ -305,7 +326,7 @@ namespace OOP_LABA7
                 }
                 else if ((storage[i].CheckIfObjectUnderCoordination(coordination.Location)))
                 {
-                    UnSelect(i);
+                    UnselectOtherObjects(i);
                     storage[i].setselect(true);
                     pictureBox1.Invalidate();
                     return;
@@ -317,8 +338,7 @@ namespace OOP_LABA7
                 CCircle circle = new CCircle(coordination.Location);
                 circle.setselect(true);
                 storage.push_back(circle);
-                UnSelect(storage.Size() - 1);
-                //index++;
+                UnselectOtherObjects(storage.Size() - 1);
 
             }
             //если выбранная фигура - квадрат
@@ -327,8 +347,7 @@ namespace OOP_LABA7
                 Square square = new Square(coordination.Location);
                 square.setselect(true);
                 storage.push_back(square);
-                UnSelect(storage.Size() - 1);
-                //index++;
+                UnselectOtherObjects(storage.Size() - 1);
 
             }
             //если выбранная фигура -  треугольник
@@ -337,12 +356,8 @@ namespace OOP_LABA7
                 Triangle Triangle = new Triangle(coordination.Location);
                 Triangle.setselect(true);
                 storage.push_back(Triangle);
-                UnSelect(storage.Size() - 1);
-                //index++;
-
+                UnselectOtherObjects(storage.Size() - 1);
             }
-
-            //panel3.Invalidate();
             pictureBox1.Invalidate();
         }
 
@@ -361,7 +376,6 @@ namespace OOP_LABA7
                 }
             }
             lb_ChoosedObject.Text = countOfSelected.ToString();
-
         }
     }
 }

@@ -10,66 +10,60 @@ namespace OOP_LABA7
 {
     class Group : BaseClass
     {
-        private Storage<BaseClass> bases;
+        private Storage<BaseClass> group;
         private int width, height;
-
-        public Group()
-        {
-            bases = new Storage<BaseClass>();
-        }
 
         public Group(int width, int height)
         {
             this.width = width; this.height = height;
             pointMin = new Point(width, height);
             pointMax = new Point(0, 0);
-            bases = new Storage<BaseClass>();
+            group = new Storage<BaseClass>();
         }
 
         public void add(BaseClass obj)
         {
-            bases.push_back(obj);
+            group.push_back(obj);
         }
 
         public BaseClass GetAndDel(int p)
         {
-            BaseClass tmp = bases[p];
-            bases.getanddelete(p);
+            BaseClass tmp =group.getanddelete(p);
             return tmp;
         }
 
         public int GetCount()
         {
-            return bases.Size();
+            return group.Size();
         }
 
         public override void move(int dx, int dy, Point beg, Point end)
         {
-            if (dy == 0)                                    //движемся по х
+            if (dy == 0)                                   
                 if (dx > 0)
                 {
                     if (pointMax.X + dx <= end.X)
-                        for (int i = 0; i < bases.Size(); i++)
-                            bases[i].move(dx, dy, beg, end);
+                        for (int i = 0; i < group.Size(); i++)
+                            group[i].move(dx, dy, beg, end);
                 }
                 else
                 {
                     if (pointMin.X + dx >= beg.X)
-                        for (int i = 0; i < bases.Size(); i++)
-                            bases[i].move(dx, dy, beg, end);
+                        for (int i = 0; i < group.Size(); i++)
+                            group[i].move(dx, dy, beg, end);
                 }
-            else if (dx == 0)                               //движемся по y
+            else if (dx == 0)                               
                 if (dy > 0)
                 {
                     if (pointMax.Y + dy <= end.Y)
-                        for (int i = 0; i < bases.Size(); i++)
-                            bases[i].move(dx, dy, beg, end);
+                        for (int i = 0; i < group.Size(); i++)
+                            group[i].move(dx, dy, beg, end);
                 }
                 else
                 {
                     if ((pointMin.Y + dy >= beg.Y))
-                        for (int i = 0; i < bases.Size(); i++)
-                            bases[i].move(dx, dy, beg, end);
+                        for (int i = 0; i < group.Size(); i++)
+                            group[i].move(dx, dy, beg, end);
                 }
             findframe();
         }
@@ -80,35 +74,35 @@ namespace OOP_LABA7
             {
                 if ((pointMax.X + dx < end.X) && (pointMax.Y + dx < end.Y) && (pointMin.X - dx > begin.X) && (pointMin.Y - dx > begin.Y))
                 {
-                    for (int i = 0; i < bases.Size(); i++)
-                        bases[i].ChangeSize(dx, begin, end);
+                    for (int i = 0; i < group.Size(); i++)
+                        group[i].ChangeSize(dx, begin, end);
                 }
             }
             else
             {
-                for (int i = 0; i < bases.Size(); i++)
-                    bases[i].ChangeSize(dx, begin, end);
+                for (int i = 0; i < group.Size(); i++)
+                    group[i].ChangeSize(dx, begin, end);
             }
             findframe();
         }
 
         public override bool CheckIfObjectUnderCoordination(Point point)
         {
-            for (int i = 0; i < bases.Size(); i++)
-                if (bases[i].CheckIfObjectUnderCoordination(point) == true) return true;
+            for (int i = 0; i < group.Size(); i++)
+                if (group[i].CheckIfObjectUnderCoordination(point) == true) return true;
             return false;
         }
                
         public override void draw(Graphics gr)
         {
-            for (int i = bases.Size() - 1; i >= 0; i--)
-                bases[i].draw(gr);
+            for (int i = group.Size() - 1; i >= 0; i--)
+                group[i].draw(gr);
             
         }
         public override void selectColor(string color1)
         {
-            for (int i = bases.Size() - 1; i >= 0; i--)
-                bases[i].selectColor(color1);
+            for (int i = group.Size() - 1; i >= 0; i--)
+                group[i].selectColor(color1);
         }
         private void findframe()
         {
@@ -117,28 +111,28 @@ namespace OOP_LABA7
             pointMax.X = 0;
             pointMax.Y = 0;
 
-            for (int i = 0; i < bases.Size(); i++)
+            for (int i = 0; i < group.Size(); i++)
             {
-                if (bases[i].getpointMin().X <= pointMin.X)
+                if (group[i].getpointMin().X <= pointMin.X)
                 {
-                    pointMin.X = bases[i].getpointMin().X;
+                    pointMin.X = group[i].getpointMin().X;
                 }
 
-                if (bases[i].getpointMin().Y <= pointMin.Y)
+                if (group[i].getpointMin().Y <= pointMin.Y)
                 {
-                    pointMin.Y = bases[i].getpointMin().Y;
-                }
-
-
-                if (bases[i].getpointMax().X >= pointMax.X)
-                {
-                    pointMax.X = bases[i].getpointMax().X;
+                    pointMin.Y = group[i].getpointMin().Y;
                 }
 
 
-                if (bases[i].getpointMax().Y >= pointMax.Y)
+                if (group[i].getpointMax().X >= pointMax.X)
                 {
-                    pointMax.Y = bases[i].getpointMax().Y;
+                    pointMax.X = group[i].getpointMax().X;
+                }
+
+
+                if (group[i].getpointMax().Y >= pointMax.Y)
+                {
+                    pointMax.Y = group[i].getpointMax().Y;
                 }
             }
         }
@@ -159,26 +153,19 @@ namespace OOP_LABA7
             stream.WriteLine("Group");
             stream.WriteLine(GetCount());
             for (int i = 0; i < GetCount(); i++)
-                bases[i].save(stream);
+                group[i].save(stream);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
         {
-            int h = Convert.ToInt32(stream.ReadLine());
-            for (int i = 0; i < h; i++)
+            int k = Convert.ToInt32(stream.ReadLine());
+            for (int i = 0; i < k; i++)
             {
                 string t = stream.ReadLine();
-                bases.push_back(factory.createBase(t, width, height));
-                bases[i].load(stream, factory);
+                group.push_back(factory.createBase(t, width, height));
+                group[i].load(stream, factory);
             }
             findframe();
-        }
-
-        ~Group()
-        {
-            for (int i = 0; i < bases.Size(); i++)
-                bases[i] = null;
-            bases = null;
         }
     }
 }

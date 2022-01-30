@@ -33,6 +33,10 @@ namespace OOP_LABA7
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.orangelabel = new System.Windows.Forms.Label();
@@ -86,6 +90,10 @@ namespace OOP_LABA7
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label14);
@@ -98,8 +106,46 @@ namespace OOP_LABA7
             this.panel2.Controls.Add(this.label6);
             this.panel2.Location = new System.Drawing.Point(713, 101);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 179);
+            this.panel2.Size = new System.Drawing.Size(182, 215);
             this.panel2.TabIndex = 13;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 193);
+            this.label16.Name = "label16";
+            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label16.Size = new System.Drawing.Size(88, 15);
+            this.label16.TabIndex = 9;
+            this.label16.Text = "Загрузить - \"L\"";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(7, 178);
+            this.label15.Name = "label15";
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label15.Size = new System.Drawing.Size(92, 15);
+            this.label15.TabIndex = 9;
+            this.label15.Text = "Сохранить - \"S\"";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 163);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(129, 15);
+            this.label13.TabIndex = 9;
+            this.label13.Text = "Разгруппировать - \"Z\"";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 148);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(112, 15);
+            this.label12.TabIndex = 9;
+            this.label12.Text = "Группировать - \"X\"";
             // 
             // label10
             // 
@@ -315,5 +361,9 @@ namespace OOP_LABA7
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lb_ObjectCounter;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -14,8 +14,8 @@ namespace OOP_LABA7
         private string color = "Gray";
         protected int size = 50;
         protected Point point = new Point(0, 0);
-        protected Point pointMax;
         protected Point pointMin;
+        protected Point pointMax;
         protected string ColorOfObject;
         protected Pen normPen = new Pen(Color.Pink, 5);
         protected Pen redPen = new Pen(Color.Red, 2);

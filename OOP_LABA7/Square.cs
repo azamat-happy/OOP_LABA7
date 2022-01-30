@@ -58,7 +58,7 @@ namespace OOP_LABA7
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Square");
-            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + ColorOfObject);
+            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + ColorOfObject);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)
@@ -66,10 +66,10 @@ namespace OOP_LABA7
             string[] data = stream.ReadLine().Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
             point.X = int.Parse(data[0]);
             point.Y = int.Parse(data[1]);
-            base.size = int.Parse(data[2]);
+            size = int.Parse(data[2]);
             selectColor(data[3]);
-            pointMin = new Point(point.X - base.size, point.Y - base.size);
-            pointMax = new Point(point.X + base.size, point.Y + base.size);
+            pointMin = new Point(point.X - size, point.Y - size);
+            pointMax = new Point(point.X + size, point.Y + size);
         }
 
     }
