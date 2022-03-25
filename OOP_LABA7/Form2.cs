@@ -209,12 +209,12 @@ namespace OOP_LABA7
             ///////////////
             if (e.KeyCode == Keys.X)                                           
             {
-                int v = 0;
+                int choosenShapes = 0;
                 for (int i = 0; i < storage.Size(); i++)
                     if (storage[i].getselect())
-                        v++;
+                        choosenShapes++;
 
-                if (storage.Size() != 0 && v > 1)
+                if (storage.Size() != 0 && choosenShapes > 1)
                 {
                     Group group = new Group(paintBoxEnd.X, paintBoxEnd.Y);
                     for (int i = storage.Size() - 1; i >= 0; i--)
@@ -271,9 +271,7 @@ namespace OOP_LABA7
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     FileStream file = new FileStream(sfd.FileName, FileMode.Create);
-
                     StreamWriter stream = new StreamWriter(file);
-
                     stream.WriteLine(storage.Size());
                     for (int i = 0; i < storage.Size(); i++)
                         storage[i].save(stream);

@@ -7,7 +7,7 @@ namespace OOP_LABA7
         public virtual BaseClass createBase(string code, int _width, int _height)
         {
             return null;
-        } 
+        }
     }
 
     class MyFactory : AbstractFactory
@@ -18,7 +18,7 @@ namespace OOP_LABA7
             switch (code)
             {
                 case "Circle":
-                    obj = new CCircle(new Point(0,0));
+                    obj = new CCircle(new Point(0, 0));
                     break;
                 case "Square":
                     obj = new Square(new Point(0, 0));

@@ -1,79 +1,73 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OOP_LABA_6_1.AbstractFactory" Collapsed="true">
-    <Position X="3.75" Y="3.5" Width="1.5" />
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="OOP_LABA7.AbstractFactory" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>AbstractFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.MyFactory" Collapsed="true">
-    <Position X="3.75" Y="4.75" Width="1.5" />
+  <Class Name="OOP_LABA7.MyFactory" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>AbstractFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.BaseClass">
-    <Position X="9.5" Y="0.5" Width="1.5" />
+  <Class Name="OOP_LABA7.BaseClass">
+    <Position X="5.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AUBCQASAAKCAAALAAIIAAAAAAAAAAACBAQgAAAAQEAA=</HashCode>
+      <HashCode>AUBAQASIIKCAAADAAIIAAAAACAAAAACBAAgAAAAQEAA=</HashCode>
       <FileName>BaseClass.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.CCircle">
-    <Position X="13.25" Y="7.25" Width="1.5" />
+  <Class Name="OOP_LABA7.CCircle">
+    <Position X="12" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAKCAAAAAAAIAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Ccircle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Form1" Collapsed="true">
-    <Position X="15.5" Y="0.5" Width="1.5" />
+  <Class Name="OOP_LABA7.Form2" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>MQAAIAAAALiIgFAAAACBQAACAIAoAAAAACJCAQBICAA=</HashCode>
-      <FileName>Form1.cs</FileName>
+      <HashCode>9wAAIAAAALiIgFAAAACBQAACAIAoAAAAACJCAQBBCAA=</HashCode>
+      <FileName>Form2.cs</FileName>
+      <NewMemberFileName>Form2.Designer.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Group">
-    <Position X="11.25" Y="7.25" Width="1.5" />
+  <Class Name="OOP_LABA7.Group">
+    <Position X="2.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAAAAAAKCAAASAQAIAAAAIAAAAAAAAAQgAQAASAAA=</HashCode>
+      <HashCode>QAYAAAAIAKCAAASAQAIAAAAACAAAAAAAAAgAQAASAAA=</HashCode>
       <FileName>Group.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Program" Collapsed="true">
-    <Position X="17.25" Y="0.5" Width="1.5" />
+  <Class Name="OOP_LABA7.Program" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Section">
-    <Position X="6.5" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAACAAKCAAACAAAoAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
-      <FileName>Section.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OOP_LABA_6_1.Square">
-    <Position X="15.75" Y="7.25" Width="1.5" />
+  <Class Name="OOP_LABA7.Square">
+    <Position X="10" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAKCAAAAAAAIAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Square.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Storage&lt;T&gt;" Collapsed="true">
-    <Position X="15.5" Y="1.5" Width="1.5" />
+  <Class Name="OOP_LABA7.Storage&lt;T&gt;" Collapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAACAAAABAgAAACIMIQIACgAAIAAIAAQEAAAgAAAA=</HashCode>
       <FileName>Storage.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOP_LABA_6_1.Triangle" Collapsed="true">
-    <Position X="8.5" Y="7.25" Width="1.5" />
+  <Class Name="OOP_LABA7.Triangle">
+    <Position X="8" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAKCAAACAAAIAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAACAAKCAAACAAAIAAAAACAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Triangle.cs</FileName>
     </TypeIdentifier>
   </Class>
