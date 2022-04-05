@@ -23,34 +23,34 @@ namespace OOP_LABA7
 
             if (ColorOfObject == "Gray")
             {
-                graphics.FillEllipse(Brushes.Gray, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Gray, point.X -size, point.Y - size, 2 * size, 2 * size);
             }
             else if (ColorOfObject == "Purple")
             {
-                graphics.FillEllipse(Brushes.Purple, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Purple, point.X - size, point.Y - size, 2 * size, 2 * size);
             }
             else if (ColorOfObject == "Orange")
             {
-                graphics.FillEllipse(Brushes.Orange, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Orange, point.X - size, point.Y - size, 2 * size, 2 * size);
             }
             else if (ColorOfObject == "Green")
             {
-                graphics.FillEllipse(Brushes.Green, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Green, point.X - size, point.Y - size, 2 * size, 2 * size);
             }
             else if (ColorOfObject == "Yellow")
             {
-                graphics.FillEllipse(Brushes.Yellow, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+                graphics.FillEllipse(Brushes.Yellow, point.X - size, point.Y - size, 2 * size, 2 * size);
             }
         }
 
         public override void drawframe(Graphics graphics)
         {
-            graphics.DrawEllipse(redPen, point.X - base.size, point.Y - base.size, 2 * base.size, 2 * base.size);
+            graphics.DrawEllipse(redPen, point.X - size, point.Y - size, 2 * size, 2 * size);
         }
 
         public override bool CheckIfObjectUnderCoordination(Point p)
         {
-            return ((p.X - point.X) * (p.X - point.X) + (p.Y - point.Y) * (p.Y - point.Y) < base.size * base.size);
+            return ((p.X - point.X) * (p.X - point.X) + (p.Y - point.Y) * (p.Y - point.Y) < size * size);
         }
         public override void save(StreamWriter stream)
         {

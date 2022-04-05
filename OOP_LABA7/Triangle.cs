@@ -162,7 +162,7 @@ namespace OOP_LABA7
         public override void save(StreamWriter stream)
         {
             stream.WriteLine("Triangle");
-            stream.WriteLine(point.X + " " + point.Y + " " + base.size + " " + ColorOfObject);
+            stream.WriteLine(point.X + " " + point.Y + " " + size + " " + ColorOfObject);
         }
 
         public override void load(StreamReader stream, AbstractFactory factory)

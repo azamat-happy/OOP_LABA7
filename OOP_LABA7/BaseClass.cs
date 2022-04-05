@@ -82,7 +82,6 @@ namespace OOP_LABA7
             if (dx >= 0)
             {
                 if ((point.X + size + dx < end.X) && (point.Y + size + dx < end.Y) && (point.X - size - dx > begin.X) && (point.Y - size - dx > begin.Y))
-                    if (2 * size + dx < 600)
                         size = size + dx;
             }
             else
