@@ -70,10 +70,8 @@ namespace OOP_LABA7
                     if ((point.Y - size + dy >= begin.Y))
                         point.Y = point.Y + dy;
                 }
-            pointMin.X = point.X - size;
-            pointMin.Y = point.Y - size;
-            pointMax.X = point.X + size;
-            pointMax.Y = point.Y + size;
+            
+            FindMinMax();
         }
 
 
@@ -89,10 +87,8 @@ namespace OOP_LABA7
                 if (2 * size + dx > 10)
                     size = size + dx;
             }
-            pointMin.X = point.X - size;
-            pointMin.Y = point.Y - size;
-            pointMax.X = point.X + size;
-            pointMax.Y = point.Y + size;
+           
+            FindMinMax();
         }
 
         virtual public bool CheckIfObjectUnderCoordination(Point point)              
@@ -121,6 +117,12 @@ namespace OOP_LABA7
         virtual public void load(StreamReader stream, AbstractFactory factory)
         {
             return;
+        }
+         public void FindMinMax(){
+            pointMin.X = point.X - size;
+            pointMin.Y = point.Y - size;
+            pointMax.X = point.X + size;
+            pointMax.Y = point.Y + size;
         }
 
 

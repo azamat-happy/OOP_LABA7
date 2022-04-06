@@ -55,10 +55,7 @@ namespace OOP_LABA7
             point3.X = point.X;
             point3.Y = point.Y - size;
 
-            pointMin.X = point.X - size;
-            pointMin.Y = point.Y - size;
-            pointMax.X = point.X + size;
-            pointMax.Y = point.Y + size;
+            FindMinMax();
         }
 
         
@@ -143,10 +140,8 @@ namespace OOP_LABA7
             point3.X = point.X;
             point3.Y = point.Y - size;
 
-            pointMin.X = point.X - size;
-            pointMin.Y = point.Y - size;
-            pointMax.X = point.X + size;
-            pointMax.Y = point.Y + size;
+            FindMinMax();
+
         }
         override public bool CheckIfObjectUnderCoordination(Point p)
         {
